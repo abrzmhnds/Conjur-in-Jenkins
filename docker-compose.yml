@@ -1,0 +1,39 @@
+version: '3'
+services:
+  database:
+    image: postgres:10.16
+    container_name: postgres_database
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 8432:5432
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@domain.com
+      PGADMIN_DEFAULT_PASSWORD: SuperSecret
+    ports:
+      - 8081:80
+
+  conjur:
+    image: cyberark/conjur
+    container_name: conjur_server
+    command: server
+    environment:
+      DATABASE_URL: postgres://postgres@database/postgres
+      CONJUR_DATA_KEY:
+      CONJUR_AUTHENTICATORS:
+    depends_on:
+      - database
+    restart: on-failure
+    ports:
+      - 8080:80
+
+  client:
+    image: cyberark/conjur-cli:5
+    container_name: conjur_client
+    entrypoint: sleep
+    command: infinity
+    volumes:
+    - ./conf/policy:/policy

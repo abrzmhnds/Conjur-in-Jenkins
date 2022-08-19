@@ -1,0 +1,16 @@
+- !policy
+  id: jenkins-three
+  body:
+  - !host jenkins.handis.id
+
+  - &variable
+    - !variable jenkis-secrets-three
+
+  - !group secrets-users
+
+  - !permit
+    privileges: [read, update, execute]
+    resource: *variables
+
+  - !grant
+    role: !group secrets-users

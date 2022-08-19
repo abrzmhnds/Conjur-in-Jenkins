@@ -1,0 +1,10 @@
+Loaded policy 'root'
+{
+  "created_roles": {
+    "myConjurAccount:host:jenkins-three/jenkins.handis.id": {
+      "id": "myConjurAccount:host:jenkins-three/jenkins.handis.id",
+      "api_key": "3p08cnh7s8sf834kezjg19wmvp51gze3k03bda57fc9ksc03209x11"
+    }
+  },
+  "version": 1
+}
