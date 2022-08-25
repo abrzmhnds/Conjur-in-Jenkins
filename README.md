@@ -49,7 +49,9 @@
 2. Load the sample policy
 
    Load the provided sample policy into Conjur built-in `root` policy to create
-   the resources for the Jenkins. Load jenkins-host
+   the resources for the Jenkins. 
+
+   Load jenkins-host. Here to see how to setup jenkins host with docker nginx reverse proxy https://gitlab.com/abriza_mahandis/docker-nginx-reverse-proxy.git 
    ```
    docker-compose exec client conjur policy load root policy/jenkins-host.yml > jenkins-host
    ```
@@ -72,9 +74,9 @@
    ```
    example
    ```
-   conjur variable values add jenkins-host/password123
+   conjur variable values add jenkins-host/variablename assword123
    ```
    check variable
    ```
-   conjur variable value jenkins/variablename
+   conjur variable value jenkins-host/variablename
    ```
