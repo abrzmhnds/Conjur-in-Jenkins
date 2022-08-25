@@ -1,0 +1,9 @@
+- !policy
+  id: jenkins-host
+  body:
+  - !layer
+  - !host jenkins.handis.id
+
+  - !grant
+    role: !layer
+    member: !host jenkins.handis.id

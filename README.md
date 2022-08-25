@@ -49,18 +49,30 @@
 2. Load the sample policy
 
    Load the provided sample policy into Conjur built-in `root` policy to create
-   the resources for the Jenkins:
+   the resources for the Jenkins. Load jenkins-host
    ```
-   docker-compose exec client conjur policy load root policy/jenkins.yml > my_app_data
+   docker-compose exec client conjur policy load root policy/jenkins-host.yml > jenkins-host
+   ```
+
+   Load jenkins-var
+   ```
+   docker-compose exec client conjur policy load root policy/jenkins-var.yml > jenkins-var
+   ```
+
+   In case you want to replce or update
+   ```
+   docker-compose exec client conjur policy load --replace root policy/jenkins-var.yml > jenkins-var
+   docker-compose exec client conjur policy load --update root policy/jenkins-var.yml > jenkins-var
    ```
 
 3. Store a Variable
+
    ```
    conjur variable values add <policy-path-of-variable-name> <secret-value>
    ```
    example
    ```
-   conjur variable values add jenkins/password123
+   conjur variable values add jenkins-host/password123
    ```
    check variable
    ```

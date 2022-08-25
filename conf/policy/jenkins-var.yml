@@ -1,0 +1,19 @@
+- !policy
+  id: jenkins_secrets
+
+  body:
+  - &variables
+    - !variable gitlab_username
+    - !variable gitlab_password
+    - !variable test_var
+
+  - !group secrets-users
+
+  - !permit
+    resource: *variables
+    privileges: [ read, execute ]
+    roles: !group secrets-users
+
+  - !grant
+    role: !group secrets-users
+    member: !layer /jenkins-host
