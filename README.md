@@ -80,3 +80,5 @@
    ```
    conjur variable value jenkins-host/variablename
    ```
+
+**Setup in Jenkins: https://www.conjur.org/blog/adding-conjur-secrets-management-to-your-jenkins-pipeline/**
